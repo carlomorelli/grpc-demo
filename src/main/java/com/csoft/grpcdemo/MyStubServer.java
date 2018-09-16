@@ -1,5 +1,6 @@
 package com.csoft.grpcdemo;
 
+import com.csoft.grpcdemo.service.LicenseDataServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -13,7 +14,7 @@ public class MyStubServer {
 
         // configure and start
         Server server = ServerBuilder.forPort(50000)
-//                    .addService(new LicenseDataServiceImpl())
+                .addService(new LicenseDataServiceImpl())
                 .build();
         server.start();
 

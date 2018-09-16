@@ -1,7 +1,29 @@
 package com.csoft.grpcdemo.service;
 
-import com.csoft.grpcdemo.licensedata.Licensedata;
+import com.csoft.grpcdemo.licensedata.LicenseDataRequest;
+import com.csoft.grpcdemo.licensedata.LicenseDataResponse;
+import com.csoft.grpcdemo.licensedata.LicenseDataServiceGrpc;
+import com.csoft.grpcdemo.licensedata.MyEnum;
+import io.grpc.stub.StreamObserver;
 
-public class LicenseDataServiceImpl {
+import static java.lang.String.format;
 
+public class LicenseDataServiceImpl extends LicenseDataServiceGrpc.LicenseDataServiceImplBase {
+
+    @Override
+    public void fetchLicenseData(LicenseDataRequest request, StreamObserver<LicenseDataResponse> responseObserver) {
+
+        LicenseDataResponse response = LicenseDataResponse.newBuilder()
+                .setEnum(MyEnum.value0)
+                .setSomeValue(format("Answering to %s, %s, %s, %s",
+                        request.getKeyId(),
+                        request.getOptional(),
+                        request.getOther(),
+                        request.getInternal().getName() + request.getInternal().getSurname()))
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+
+    }
 }
