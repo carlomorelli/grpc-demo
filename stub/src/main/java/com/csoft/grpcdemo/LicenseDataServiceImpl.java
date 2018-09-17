@@ -22,6 +22,8 @@ public class LicenseDataServiceImpl extends LicenseDataServiceGrpc.LicenseDataSe
                         request.getOther(),
                         request.getInternal().getName() + request.getInternal().getSurname()))
                 .build();
+        System.out.println("Getting request: " + request);
+        System.out.println("Answering: " + response);
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();
