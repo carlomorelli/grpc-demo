@@ -1,4 +1,5 @@
-package com.csoft.grpcdemo.service;
+package com.csoft.grpcdemo;
+
 
 import com.csoft.grpcdemo.licensedata.LicenseDataRequest;
 import com.csoft.grpcdemo.licensedata.LicenseDataResponse;

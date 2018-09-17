@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package licensedata;
+
+option java_package = "com.csoft.grpcdemo.licensedata";
+option java_multiple_files = true;
+
+
+enum MyEnum {
+    value0 = 0;
+    value1 = 1;
+    value2 = 2;
+}
+
+message Internal {
+    string name = 1;
+    string surname = 2;
+}
+message LicenseDataRequest {
+    string keyId = 1;
+    string other = 2;
+    string optional = 3;
+    Internal internal = 4;
+}
+
+message LicenseDataResponse {
+    string someValue = 1;
+    int32 someNumber = 2;
+    MyEnum enum = 3;
+}
+
+
+service LicenseDataService {
+    rpc fetchLicenseData (LicenseDataRequest) returns (LicenseDataResponse);
+}
