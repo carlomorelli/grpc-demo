@@ -16,7 +16,7 @@ public class LicenseDataServiceImpl extends LicenseDataServiceGrpc.LicenseDataSe
 
         LicenseDataResponse response = LicenseDataResponse.newBuilder()
                 .setEnum(MyEnum.value0)
-                .setSomeValue(format("Answering to %s, %s, %s, %s",
+                .setSomeValue(format("This is the Stub. Answering to %s, %s, %s, %s",
                         request.getKeyId(),
                         request.getOptional(),
                         request.getOther(),
