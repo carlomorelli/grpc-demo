@@ -15,11 +15,11 @@ public class VertxGrpcServer {
                 .addService(new LicenseDataServiceImpl())
                 .build();
 
-        server.start(ar -> {
-            if (ar.succeeded()) {
+        server.start(asyncResult -> {
+            if (asyncResult.succeeded()) {
                 System.out.println("[Vert.x server] started on port 50001.");
             } else {
-                ar.cause().printStackTrace();
+                asyncResult.cause().printStackTrace();
                 System.exit(1);
             }
         });
