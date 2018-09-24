@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package stringservice;
+
+option java_package = "com.csoft.grpcdemo.stringservice";
+option java_multiple_files = true;
+
+
+
+message HashStringResponse {
+    string hash = 1;
+}
+
+message HashStringRequest {
+    string inputString = 1;
+}
+
+message SplitStringRequest {
+    string inputString = 1;
+}
+
+message SplitStringResponse {
+    string word = 1;
+}
+
+message JoinStringRequest {
+    string word = 1;
+}
+
+message JoinStringResponse {
+    string outputString = 1;
+}
+
+service StringService {
+
+    // unary API
+    rpc HashString (HashStringRequest) returns (HashStringResponse) {};
+
+    // serverstream API
+    rpc SplitString (SplitStringRequest) returns (stream SplitStringResponse) {};
+
+    // clientstream API
+    rpc JoinString (stream JoinStringRequest) returns (JoinStringResponse) {};
+}

@@ -11,6 +11,7 @@ public class StubGrpcServer {
         // configure and start
         Server server = ServerBuilder.forPort(50000)
                 .addService(new LicenseDataServiceImpl())
+                .addService(new StringServiceImpl())
                 .build();
         server.start();
 
